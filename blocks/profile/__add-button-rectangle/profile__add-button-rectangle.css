@@ -9,6 +9,10 @@
   margin: 0 auto;
 }
 
+.profile__add-button-rectangle:hover {
+  opacity: 0.6;
+}
+
 @media screen and (min-width: 768px) {
   .profile__add-button-rectangle {
     margin: 0;

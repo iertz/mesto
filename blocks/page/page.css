@@ -3,6 +3,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   max-width: 880px;
+  
   margin: 0 auto;
   background-color: #000;
 }

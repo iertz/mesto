@@ -13,3 +13,9 @@
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__add-button-rectangle/profile__add-button-rectangle.css');
 @import url('../blocks/uikit-plus/uikit-plus.css');
+@import url('../blocks/photo-grid/photo-grid.css');
+@import url('../blocks/photo-grid/__item/photo-grid__item.css');
+@import url('../blocks/photo-grid/__image/photo-grid__image.css');
+@import url('../blocks/photo-grid/__name-block/photo-grid__name-block.css');
+@import url('../blocks/photo-grid/__name/photo-grid__name.css');
+@import url('../blocks/photo-grid/__like-button/photo-grid__like-button.css');
