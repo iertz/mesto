@@ -1,10 +1,10 @@
-.uikit-like_disabled {
+.uikit-like {
   background-image: url('../../images/UIkit/like-button_disabled.svg');
   width: 22px;
   height: 19px;
   align-self: center;
 }
 
-.uikit-like_disabled:hover {
+.uikit-like:hover {
   opacity: .5;
 }

@@ -18,7 +18,7 @@
 @import url('../blocks/photo-grid/__image/photo-grid__image.css');
 @import url('../blocks/photo-grid/__name-block/photo-grid__name-block.css');
 @import url('../blocks/photo-grid/__name/photo-grid__name.css');
-@import url('../blocks/uikit-like/uikit-like_disabled.css');
+@import url('../blocks/uikit-like/uikit-like.css');
 @import url('../blocks/uikit-like/uikit-like_active.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
