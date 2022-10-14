@@ -18,6 +18,16 @@
 @import url('../blocks/photo-grid/__image/photo-grid__image.css');
 @import url('../blocks/photo-grid/__name-block/photo-grid__name-block.css');
 @import url('../blocks/photo-grid/__name/photo-grid__name.css');
-@import url('../blocks/photo-grid/__like-button/photo-grid__like-button.css');
+@import url('../blocks/uikit-like/uikit-like_active.css');
+@import url('../blocks/uikit-like/uikit-like_disabled.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
+@import url('../blocks/popup/popup_opened.css');
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/uikit-close/uikit-close.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__heading/popup__heading.css');
+@import url('../blocks/popup/__input/popup__input.css');
+@import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__button/popup__button.css');
+@import url('../blocks/popup/__button-text/popup__button-text.css');

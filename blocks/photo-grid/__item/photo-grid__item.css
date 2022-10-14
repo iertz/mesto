@@ -1,9 +1,13 @@
 .photo-grid__item {
-  max-width: 485px;
-  width: 100%;
+  width: 282px;
   height: 361px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
 }
 
+@media screen and (min-width: 634px) and (max-width: 887px) {
+  .photo-grid__item {
+    width: 100%;
+  }
+}

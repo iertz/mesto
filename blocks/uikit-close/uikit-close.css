@@ -1,0 +1,11 @@
+.uikit-close {
+  position: absolute;
+  right: 0;
+  top: -36px;
+  width: 20px;
+  height: 20px;
+}
+
+.uikit-close:hover {
+  opacity: .6;
+}
