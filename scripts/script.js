@@ -6,13 +6,9 @@ const submitBtn = document.querySelector('.popup__button')
 let currentName = document.querySelector('.profile__name');
 let currentTitle = document.querySelector('.profile__title');
 
-let nameInput = document.querySelector('.popup__input[name="traveller-name"]');
-let titleInput = document.querySelector('.popup__input[name="traveller-title"]');
-
-
-
-
-console.log(currentName);
+let formElement = document.querySelector('.popup__container')
+let nameInput = formElement.querySelector('.popup__input[name="traveller-name"]');
+let titleInput = formElement.querySelector('.popup__input[name="traveller-title"]');
 
 
 function popupOpen () {
@@ -36,4 +32,4 @@ editBtn.addEventListener('click', popupOpen);
 
 closeBtn.addEventListener('click', popupClose);
 
-submitBtn.addEventListener('click', popupSubmit);
+formElement.addEventListener('submit', popupSubmit);
