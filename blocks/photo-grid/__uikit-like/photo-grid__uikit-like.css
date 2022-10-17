@@ -1,0 +1,14 @@
+.photo-grid__uikit-like {
+  background-image: url('../../../images/UIkit/like-disabled.svg');
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  cursor: pointer;
+  border: none;
+  padding: 0; 
+  background-color: transparent;
+}
+
+.photo-grid__uikit-like:hover {
+  opacity: .5;
+}

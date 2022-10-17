@@ -9,83 +9,91 @@
 
   <body class="page">
     <header class="header">
-      <img src="./images/UIkit/header__logo.png" class="header__logo" alt="Логотип">
+      <img src="./images/UIkit/header__logo.svg" class="header__logo" alt="Логотип">
     </header>
+
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__uikit-close" type="button">
+          <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
+        </button>
+        <form class="popup__form" name="edit-profile">
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <input class="popup__input" type="text" name="traveller-name" placeholder="Имя и фамилия" required>
+          <input class="popup__input" type="text" name="traveller-title" placeholder="О себе в нескольких словах">
+          <button class="popup__button" type="submit"><span class="popup__button-text">Сохранить</span></button>
+        </form>
+      </div>
+    </section>
 
     <main class="content">
       <section class="profile">
         <img src="./images/profile__avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__info-placeholder">
-            <h2 class="profile__name">Жак-Ив Кусто</h2>
-            <img 
-              class="profile__edit-button" 
-              src="./images/UIkit/uikit-edit-button.png" 
-              alt="Кнопка редактирования">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button">
+              <img 
+                class="profile__edit-svg"
+                src="./images/UIkit/uikit-edit-button.svg" 
+                alt="Кнопка редактирования">
+            </button>
             <p class="profile__title">Исследователь океана</p>
           </div>
           <button class="profile__add-button-rectangle">
             <img 
-              src="./images/UIkit/uikit-plus.png" 
+              src="./images/UIkit/uikit-plus.svg" 
               alt="Иконка-добавить" 
-              class="uikit-plus">
+              class="profile__uikit-plus">
           </button>
         </div>
       </section>
 
-      <section class="popup">
-        <form class="popup__container">
-          <img src="./images/UIkit/uikit-close.png" alt="Иконка закрытия" class="uikit-close">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <input class="popup__input" type="text" name="traveller-name" placeholder="Имя и фамилия" required>
-          <input class="popup__input" type="text" name="traveller-title" placeholder="О себе в нескольких словах">
-          <button class="popup__button" type="submit"><span class="popup__button-text">Сохранить</span></button>
-        </form>
-      </section>
-
-      <section class="photo-grid">
-        <div class="photo-grid__item">
-          <img src="./images/ergaki.jpg" alt="Ергаки" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Ергаки</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Камчатка</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="./images/karachaevo-cherkessia.jpg" alt="Карачаево-Черкессия" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Карачаево-Черкессия</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="./images/Man-Pupu-Ner.jpeg" alt="Маньпупунёр" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Маньпупунёр</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="./images/smolensk.jpg" alt="Смоленск" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Смоленск</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="./images/st-petersburg.jpg" alt="Санкт-Петербург" class="photo-grid__image">
-          <div class="photo-grid__name-block">
-            <h2 class="photo-grid__name">Санкт-Петербург</h2>
-            <div class="uikit-like"></div>
-          </div>
-        </div>
+      <section class="photos">
+        <ul class="photo-grid">
+          <li class="photo-grid__item">
+            <img src="./images/ergaki.jpg" alt="Ергаки" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Ергаки</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+          <li class="photo-grid__item">
+            <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Камчатка</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+          <li class="photo-grid__item">
+            <img src="./images/karachaevo-cherkessia.jpg" alt="Карачаево-Черкессия" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Карачаево-Черкессия</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+          <li class="photo-grid__item">
+            <img src="./images/Man-Pupu-Ner.jpeg" alt="Маньпупунёр" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Маньпупунёр</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+          <li class="photo-grid__item">
+            <img src="./images/smolensk.jpg" alt="Смоленск" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Смоленск</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+          <li class="photo-grid__item">
+            <img src="./images/st-petersburg.jpg" alt="Санкт-Петербург" class="photo-grid__image">
+            <div class="photo-grid__name-block">
+              <h2 class="photo-grid__name">Санкт-Петербург</h2>
+              <button class="photo-grid__uikit-like" type="button"></button>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
 

@@ -1,6 +1,6 @@
 const editBtn = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
-const closeBtn = document.querySelector('.uikit-close');
+const closeBtn = document.querySelector('.popup__uikit-close');
 const submitBtn = document.querySelector('.popup__button')
 
 let currentName = document.querySelector('.profile__name');

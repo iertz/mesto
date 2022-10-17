@@ -7,11 +7,16 @@
   margin: 0;
   grid-area: title;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 260px;
 }
 
 @media screen and (min-width: 768px) {
   .profile__title {
     font-size: 18px;
     line-height: 22px;
+    max-width: 336px;
   }
 }
