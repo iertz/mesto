@@ -12,13 +12,22 @@ let titleInput = formElement.querySelector('.popup__input[name="traveller-title"
 
 
 function popupOpen () {
-  popup.classList.add('popup_opened');
+  popup.classList.toggle('popup_opened');
   nameInput.value = currentName.textContent;
   titleInput.value = currentTitle.textContent;
 }
 
 function popupClose () {
-  popup.classList.remove('popup_opened');
+  popup.classList.toggle('popup_opened');
+}
+
+function popupCloseOnClickOverlay (event) {
+  console.log(event.target, event.currentTarget);
+  if (event.target !== event.currentTarget) {
+    return;
+  }
+  
+  popupClose();
 }
 
 function popupSubmit (evt) {
@@ -33,3 +42,5 @@ editBtn.addEventListener('click', popupOpen);
 closeBtn.addEventListener('click', popupClose);
 
 formElement.addEventListener('submit', popupSubmit);
+
+popup.addEventListener('click', popupCloseOnClickOverlay);
