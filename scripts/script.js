@@ -1,4 +1,3 @@
-//main page buttons
 const editBtn = document.querySelector('.profile__edit-button');
 const addBtn = document.querySelector('.profile__add-button-rectangle')
 
@@ -13,12 +12,12 @@ const closeBtnAdd = popupAddCard.querySelector('.popup__uikit-close');
 const closeBtnImg = popupImg.querySelector('.popup__uikit-close');
 
 // popup profile form 
-const formElementEditProfile = popupEditProfile.querySelector('.popup__container');
+const formElementEditProfile = popupEditProfile.querySelector('.popup__form');
 let nameInput = formElementEditProfile.querySelector('.popup__input[name="traveller-name"]');
 let titleInput = formElementEditProfile.querySelector('.popup__input[name="traveller-title"]');
 
 // popup add card form 
-const formElementAdd = popupAddCard.querySelector('.popup__container');
+const formElementAdd = popupAddCard.querySelector('.popup__form');
 let cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
 let cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]'); 
 
@@ -33,6 +32,7 @@ const gridSection = document.querySelector('.photo-grid');
 //текущие поля профиля
 let currentName = document.querySelector('.profile__name');
 let currentTitle = document.querySelector('.profile__title');
+
 
 
 
@@ -125,20 +125,21 @@ function popupAddCardSubmit (evt) {
 
   gridSection.prepend(createCard(card)); 
 
+  formElementAdd.reset();
+
   popupAddCard.classList.remove('popup_opened');
 };
 
 //функция удаления
 function deleteCard(event) {
   const targetEl = event.target;
-  console.log(targetEl); 
-
   targetEl.closest('.photo-grid__item').remove();
 };
 
 //функция лайка
-function likeCard() {
-
+function likeCard(event) {
+  const targetEl = event.target;  
+  targetEl.classList.toggle('photo-grid__uikit-like_active');
 };
 
 //функция открытия картинки
