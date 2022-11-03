@@ -123,7 +123,7 @@ function popupAddCardSubmit (evt) {
   card.name = cardNameInput.value;
   card.link = cardLinkInput.value; 
 
-  renderCard (card); 
+  gridSection.prepend(createCard(card)); 
 
   popupAddCard.classList.remove('popup_opened');
 };
