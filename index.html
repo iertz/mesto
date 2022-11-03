@@ -12,7 +12,7 @@
       <img src="./images/UIkit/header__logo.svg" class="header__logo" alt="Логотип">
     </header>
 
-    <section class="popup">
+    <section class="popup popup_role_edit-profile">
       <div class="popup__container">
         <button class="popup__uikit-close" type="button">
           <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
@@ -23,6 +23,30 @@
           <input class="popup__input" type="text" name="traveller-title" placeholder="О себе в нескольких словах">
           <button class="popup__button" type="submit"><span class="popup__button-text">Сохранить</span></button>
         </form>
+      </div>
+    </section>
+
+    <section class="popup popup_role_add-card">
+      <div class="popup__container">
+        <button class="popup__uikit-close" type="button">
+          <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
+        </button>
+        <form class="popup__form" name="add-card">
+          <h2 class="popup__heading">Новое место</h2>
+          <input class="popup__input" type="text" name="card-name" placeholder="Название" required>
+          <input class="popup__input" type="text" name="card-link" placeholder="Ссылка на картинку">
+          <button class="popup__button" type="submit"><span class="popup__button-text">Создать</span></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup popup_role_show-image">
+      <div class="popup__container-image">
+        <button class="popup__uikit-close" type="button">
+          <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
+        </button>
+        <img src="" alt="" class="popup__image">
+        <h2 class="popup__caption"></h2>
       </div>
     </section>
 
@@ -51,48 +75,7 @@
 
       <section class="photos">
         <ul class="photo-grid">
-          <li class="photo-grid__item">
-            <img src="./images/ergaki.jpg" alt="Ергаки" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Ергаки</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-grid__item">
-            <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Камчатка</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-grid__item">
-            <img src="./images/karachaevo-cherkessia.jpg" alt="Карачаево-Черкессия" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Карачаево-Черкессия</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-grid__item">
-            <img src="./images/Man-Pupu-Ner.jpeg" alt="Маньпупунёр" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Маньпупунёр</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-grid__item">
-            <img src="./images/smolensk.jpg" alt="Смоленск" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Смоленск</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-grid__item">
-            <img src="./images/st-petersburg.jpg" alt="Санкт-Петербург" class="photo-grid__image">
-            <div class="photo-grid__name-block">
-              <h2 class="photo-grid__name">Санкт-Петербург</h2>
-              <button class="photo-grid__uikit-like" type="button"></button>
-            </div>
-          </li>
+          
         </ul>
       </section>
     </main>
@@ -100,6 +83,17 @@
     <footer class="footer">
       <small class="footer__copyright">&copy; 2022, Mesto Russia</small>
     </footer>
+
+    <template id="gridcard-template">
+      <li class="photo-grid__item">
+        <img src="" alt="" class="photo-grid__image">
+        <img src="./images/UIkit/uikit-trash.svg" alt="Иконка удалить" class="photo-grid__uikit-trash">
+        <div class="photo-grid__name-block">
+          <h2 class="photo-grid__name"></h2>
+          <button class="photo-grid__uikit-like" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
