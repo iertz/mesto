@@ -91,7 +91,6 @@ function renderCard (card) {
   gridSection.append(newCard);
 };
 
-
 // функция открытия попапа
 function popupOpen (item) {
   item.classList.toggle('popup_opened');
@@ -130,8 +129,11 @@ function popupAddCardSubmit (evt) {
 };
 
 //функция удаления
-function deleteCard() {
+function deleteCard(event) {
+  const targetEl = event.target;
+  console.log(targetEl); 
 
+  targetEl.closest('.photo-grid__item').remove();
 };
 
 //функция лайка
