@@ -28,7 +28,6 @@ const submitBtnAdd = popupAddCard.querySelector('.popup__button');
 
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
-// const gridImg = document.querySelector('.photo-grid__image');
 
 
 //текущие поля профиля
