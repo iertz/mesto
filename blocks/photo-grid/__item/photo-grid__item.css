@@ -5,9 +5,3 @@
   background-color: #fff;
   border-radius: 10px;
 }
-
-@media screen and (min-width: 634px) and (max-width: 887px) {
-  .photo-grid__item {
-    width: 100%;
-  }
-}
