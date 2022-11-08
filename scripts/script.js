@@ -30,8 +30,8 @@ const gridSection = document.querySelector('.photo-grid');
 
 
 //текущие поля профиля
-let currentName = document.querySelector('.profile__name');
-let currentTitle = document.querySelector('.profile__title');
+const currentName = document.querySelector('.profile__name');
+const currentTitle = document.querySelector('.profile__title');
 
 
 // функция создания карточки из шаблона
