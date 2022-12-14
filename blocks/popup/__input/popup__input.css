@@ -1,22 +1,13 @@
 .popup__input {
-  display: block;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  width: 238px;
-  height: 27px;
-  margin: 0 auto 30px;
   padding-bottom: 12px;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.2);
   box-sizing: border-box; 
 }
-
-.popup__input:last-of-type {
-  margin: 0 auto 45px;
-}
-
 
 .popup__input:focus {
   outline-color: lightblue;

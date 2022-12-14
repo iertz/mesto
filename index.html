@@ -52,10 +52,16 @@
         <button class="popup__uikit-close" type="button">
           <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
         </button>
-        <form class="popup__form" name="edit-profile">
+        <form class="popup__form" name="edit-profile" novalidate>
           <h2 class="popup__heading">Редактировать профиль</h2>
-          <input class="popup__input" type="text" name="traveller-name" placeholder="Имя и фамилия" required>
-          <input class="popup__input" type="text" name="traveller-title" placeholder="О себе в нескольких словах">
+          <div class="popup__input-field">
+            <input id="popup__first-input" class="popup__input" type="text" name="traveller-name" placeholder="Имя и фамилия" required minlength="2" maxlength="40">
+            <span class="popup__first-input-error popup__input-error"></span>
+          </div>
+          <div class="popup__input-field">
+            <input id="popup__second-input" class="popup__input" type="text" name="traveller-title" placeholder="О себе в нескольких словах" required minlength="2" maxlength="200">
+            <span class="popup__second-input-error popup__input-error"></span>
+          </div>
           <button class="popup__button" type="submit"><span class="popup__button-text">Сохранить</span></button>
         </form>
       </div>
@@ -66,16 +72,22 @@
         <button class="popup__uikit-close" type="button">
           <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
         </button>
-        <form class="popup__form" name="add-card">
+        <form class="popup__form" name="add-card" novalidate>
           <h2 class="popup__heading">Новое место</h2>
-          <input class="popup__input" type="text" name="card-name" placeholder="Название" required>
-          <input class="popup__input" type="text" name="card-link" placeholder="Ссылка на картинку">
+          <div class="popup__input-field">
+            <input id="popup__first-input" class="popup__input" type="text" name="card-name" placeholder="Название" required minlength="2" maxlength="30">
+            <span class="popup__first-input-error popup__input-error"></span>
+          </div>
+          <div class="popup__input-field">
+            <input id="popup__second-input" class="popup__input" type="url" name="card-link" placeholder="Ссылка на картинку" required>
+            <span class="popup__second-input-error popup__input-error"></span>
+          </div>
           <button class="popup__button" type="submit"><span class="popup__button-text">Создать</span></button>
         </form>
       </div>
     </div>
 
-    <div class="popup popup_role_show-image">
+    <div class="popup popup_role_show-image" novalidate>
       <div class="popup__container-image">
         <button class="popup__uikit-close" type="button">
           <img src="./images/UIkit/uikit-close.svg" alt="Иконка закрытия" class="popup__close-svg">
@@ -98,5 +110,6 @@
 
     <script src="./scripts/data.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
