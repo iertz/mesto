@@ -5,6 +5,7 @@ const btnAdd = document.querySelector('.profile__add-button-rectangle')
 const popupEditProfile = document.querySelector('.popup_role_edit-profile');
 const popupAddCard = document.querySelector('.popup_role_add-card');
 const popupImg = document.querySelector('.popup_role_show-image');
+const popups = Array.from(document.querySelectorAll('.popup'));
 
 //элементы попапа с картинкой
 const imgPopUpImage = popupImg.querySelector('.popup__image');
@@ -63,7 +64,7 @@ function renderCard (card) {
 
 // функция открытия обычного попапа
 function popupOpen (item) {
-  item.classList.toggle('popup_opened');
+  item.classList.add('popup_opened');
 };
 
 // функция открытия попапа с картинкой
@@ -78,8 +79,9 @@ function openPopupImg(card) {
 
 // функция закрытия попапа
 function popupClose (item) {
-  item.classList.toggle('popup_opened');
+  item.classList.remove('popup_opened');
 };
+
 
 
 // функции сабмита
@@ -153,6 +155,30 @@ btnCloseImgPopup.addEventListener('click', ()=> {
   popupClose(popupImg);
 });
 
+
+// слушатели – закрытие попапа по клику на оверлей
+
+popupEditProfile.addEventListener('click', function (evt) {
+  if ((evt.currentTarget === evt.target) || (evt.key === "Escape")) {
+    popupClose(popupEditProfile); 
+  }
+});
+
+popupAddCard.addEventListener('click', function (evt) {
+  if (evt.currentTarget === evt.target) {
+    popupClose(popupAddCard); 
+  }
+});
+
+// слушатели – закрытие попапов по клавише ESC
+
+document.addEventListener('keydown', (evt) => {
+  popups.forEach((popup) => {
+    if (evt.key = "Escape") {
+      popupClose(popup); 
+    }
+  });
+});
 
 //получить начальный список карточек
 initialCards.forEach(renderCard);

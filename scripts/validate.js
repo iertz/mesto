@@ -30,6 +30,7 @@ const toggleButtonState = (inputList, buttonElement, buttonTextElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__button_disabled');
     buttonTextElement.classList.add('popup__button-text_disabled');
+    
   } else {
     buttonElement.classList.remove('popup__button_disabled');
     buttonTextElement.classList.remove('popup__button-text_disabled');
@@ -47,6 +48,11 @@ const setEventListeners = (formElement) => {
     inputElement.addEventListener('input', function () {
       toggleButtonState(inputList, buttonElement, buttonTextElement);
       isValid(formElement, inputElement);
+    });
+    inputElement.addEventListener('keypress', function (event) {
+      if ((event.key === "Enter") && (hasInvalidInput(inputList))) {
+        event.preventDefault();
+      };
     });
   });
 }; 
