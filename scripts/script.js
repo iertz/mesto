@@ -174,7 +174,7 @@ popupAddCard.addEventListener('click', function (evt) {
 
 document.addEventListener('keydown', (evt) => {
   popups.forEach((popup) => {
-    if (evt.key = "Escape") {
+    if (evt.key === "Escape") {
       popupClose(popup); 
     }
   });
