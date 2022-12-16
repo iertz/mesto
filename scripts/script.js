@@ -18,13 +18,13 @@ const btnCloseImgPopup = popupImg.querySelector('.popup__uikit-close');
 
 // popup profile form 
 const formElementEditProfile = popupEditProfile.querySelector('.popup__form');
-let nameInput = formElementEditProfile.querySelector('.popup__input[name="traveller-name"]');
-let titleInput = formElementEditProfile.querySelector('.popup__input[name="traveller-title"]');
+const nameInput = formElementEditProfile.querySelector('.popup__input[name="traveller-name"]');
+const titleInput = formElementEditProfile.querySelector('.popup__input[name="traveller-title"]');
 
 // popup add card form 
 const formElementAdd = popupAddCard.querySelector('.popup__form');
-let cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
-let cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
+const cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
+const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
 
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
@@ -159,7 +159,7 @@ btnCloseImgPopup.addEventListener('click', ()=> {
 // слушатели – закрытие попапа по клику на оверлей
 
 popupEditProfile.addEventListener('click', function (evt) {
-  if ((evt.currentTarget === evt.target) || (evt.key === "Escape")) {
+  if ((evt.currentTarget === evt.target)) {
     popupClose(popupEditProfile); 
   }
 });
@@ -167,6 +167,12 @@ popupEditProfile.addEventListener('click', function (evt) {
 popupAddCard.addEventListener('click', function (evt) {
   if (evt.currentTarget === evt.target) {
     popupClose(popupAddCard); 
+  }
+});
+
+popupImg.addEventListener('click', function (evt) {
+  if (evt.currentTarget === evt.target) {
+    popupClose(popupImg); 
   }
 });
 
