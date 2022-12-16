@@ -21,7 +21,6 @@ const titleInput = formElementEditProfile.querySelector('.popup__input[name="tra
 const formElementAdd = popupAddCard.querySelector('.popup__form');
 const cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
 const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
-console.log(cardNameInput);
 
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
