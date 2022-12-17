@@ -1,6 +1,6 @@
 
 const btnEdit = document.querySelector('.profile__edit-button');
-const btnAdd = document.querySelector('.profile__add-button-rectangle')
+const btnAdd = document.querySelector('.profile__add-button-rectangle');
 
 //popups
 const popupEditProfile = document.querySelector('.popup_role_edit-profile');
@@ -19,6 +19,7 @@ const titleInput = formElementEditProfile.querySelector('.popup__input[name="tra
 
 // popup add card form 
 const formElementAdd = popupAddCard.querySelector('.popup__form');
+const submitBtnAddCard = formElementAdd.querySelector('.popup__button');
 const cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
 const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
 
@@ -152,14 +153,10 @@ formElementEditProfile.addEventListener('submit', submitPopupEditProfile);
 
 // слушатели – открытие и самбит формы добавления новой карточка через попап
 
-btnAdd.addEventListener('click', () => {
-  const submitBtn = formElementAdd.querySelector('.popup__button');
-  const submitBtnText = formElementAdd.querySelector('.popup__button-text');
-  
+btnAdd.addEventListener('click', (evt) => {  
   if ((cardLinkInput.value === '') || (cardNameInput.value === '')) {
-    submitBtn.setAttribute('disabled', '');
-    submitBtn.classList.add('popup__button_disabled');
-    submitBtnText.classList.add('popup__button-text_disabled');
+    submitBtnAddCard.setAttribute('disabled', '');
+    submitBtnAddCard.classList.add('popup__button_disabled');
   }
   openPopup(popupAddCard);
 });

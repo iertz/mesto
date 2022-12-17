@@ -26,28 +26,24 @@ const hasInvalidInput = (inputList) => {
   })
 }; 
 
-const toggleButtonState = (inputList, buttonElement, buttonTextElement, settings) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settings.inactiveButtonClass);
-    buttonTextElement.classList.add(settings.inactiveButtonTextClass);
-    
   } else {
     buttonElement.classList.remove(settings.inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
-    buttonTextElement.classList.remove(settings.inactiveButtonTextClass);
   }
 }; 
 
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-  const buttonTextElement = formElement.querySelector(settings.buttonTextElSelector);
   
-  toggleButtonState(inputList, buttonElement, buttonTextElement, settings);
+  toggleButtonState(inputList, buttonElement, settings);
   
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      toggleButtonState(inputList, buttonElement, buttonTextElement, settings);
+      toggleButtonState(inputList, buttonElement, settings);
       isValid(formElement, inputElement, settings);
     });
     inputElement.addEventListener('keypress', function (event) {
@@ -74,9 +70,7 @@ enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
-  buttonTextElSelector: '.popup__button-text',
   inactiveButtonClass: 'popup__button_disabled',
-  inactiveButtonTextClass: 'popup__button-text_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 });
