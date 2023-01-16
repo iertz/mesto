@@ -1,4 +1,5 @@
-import { Card } from './card.js'
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
 
 const btnEdit = document.querySelector('.profile__edit-button');
 const btnAdd = document.querySelector('.profile__add-button-rectangle');
@@ -7,11 +8,6 @@ const btnAdd = document.querySelector('.profile__add-button-rectangle');
 const popupEditProfile = document.querySelector('.popup_role_edit-profile');
 const popupAddCard = document.querySelector('.popup_role_add-card');
 const popups = document.querySelectorAll('.popup');
-
-/*элементы попапа с картинкой
-const imgPopUpImage = popupImg.querySelector('.popup__image');
-const imgPopUpCaption = popupImg.querySelector('.popup__caption');
-*/
 
 // popup profile form 
 const formElementEditProfile = popupEditProfile.querySelector('.popup__form');
@@ -27,6 +23,8 @@ const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
 
+//формы 
+const forms = Array.from(document.querySelectorAll('.popup__form'));
 
 //текущие поля профиля
 const currentName = document.querySelector('.profile__name');
@@ -140,5 +138,16 @@ formElementAdd.addEventListener('submit', submitPopupAddCard);
 initialCards.forEach((item) => {
   gridSection.append(renderCard(item));
 });
+
+forms.forEach((item) => {
+  const validator = new FormValidator({
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+}, item);
+  validator.enableValidation();
+})
 
 export { openPopup, deleteCard, likeCard }
