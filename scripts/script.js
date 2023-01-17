@@ -9,6 +9,31 @@ const popupEditProfile = document.querySelector('.popup_role_edit-profile');
 const popupAddCard = document.querySelector('.popup_role_add-card');
 const popups = document.querySelectorAll('.popup');
 
+//формы 
+const forms = Array.from(document.querySelectorAll('.popup__form'));
+
+//валидатор
+
+
+forms.forEach((form) => {
+  const validator = new FormValidator({
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+  }, form);
+
+  validator.enableValidation();
+
+  // слушатель – открытие формы добавления новой карточка через попап
+  btnAdd.addEventListener('click', () => {  
+    validator.toggleButtonState();
+    openPopup(popupAddCard);
+  });
+
+})
+
 // popup profile form 
 const formElementEditProfile = popupEditProfile.querySelector('.popup__form');
 const nameInput = formElementEditProfile.querySelector('.popup__input[name="traveller-name"]');
@@ -20,11 +45,14 @@ const submitBtnAddCard = formElementAdd.querySelector('.popup__button');
 const cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
 const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
 
+// popup image
+const popupImg = document.querySelector('.popup_role_show-image');
+const imgPopUpImage = popupImg.querySelector('.popup__image');
+const imgPopUpCaption = popupImg.querySelector('.popup__caption');
+
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
 
-//формы 
-const forms = Array.from(document.querySelectorAll('.popup__form'));
 
 //текущие поля профиля
 const currentName = document.querySelector('.profile__name');
@@ -55,25 +83,11 @@ function closePopup (item) {
 // функция закрьтия попапа по клику на крестик или оверлей
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
+      if ((evt.target.classList.contains('popup_opened')) || (evt.target.classList.contains('popup__close-svg'))) {
             closePopup(popup)
-      }
-      if (evt.target.classList.contains('popup__close-svg')) {
-          closePopup(popup)
-      }
-    })
-})
-
-// хэндлеры событий в карточке
-function deleteCard(event) {
-  const targetEl = event.target;
-  targetEl.closest('.photo-grid__item').remove();
-}
-  
-function likeCard(event) {
-  const targetEl = event.target;  
-  targetEl.classList.toggle('photo-grid__uikit-like_active');
-}
+      };  
+    });
+});
 
 
 // функция для создания карточки
@@ -110,28 +124,18 @@ function submitPopupAddCard (evt) {
 };
 
 
-// слушатели – открытие и сабмит данных профиля
+// слушатели – открытие данных профиля
 btnEdit.addEventListener('click', function() {
   nameInput.value = currentName.textContent;
   titleInput.value = currentTitle.textContent;
   openPopup(popupEditProfile);
 });
 
+
+
 formElementEditProfile.addEventListener('submit', submitPopupEditProfile);
 
-
-
-// слушатели – открытие и самбит формы добавления новой карточка через попап
-btnAdd.addEventListener('click', (evt) => {  
-  if ((cardLinkInput.value === '') || (cardNameInput.value === '')) {
-    submitBtnAddCard.setAttribute('disabled', '');
-    submitBtnAddCard.classList.add('popup__button_disabled');
-  }
-  openPopup(popupAddCard);
-});
-
 formElementAdd.addEventListener('submit', submitPopupAddCard);
-
 
 
 //получить начальный список карточек
@@ -139,15 +143,5 @@ initialCards.forEach((item) => {
   gridSection.append(renderCard(item));
 });
 
-forms.forEach((item) => {
-  const validator = new FormValidator({
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-}, item);
-  validator.enableValidation();
-})
 
-export { openPopup, deleteCard, likeCard }
+export { openPopup, popupImg, imgPopUpImage, imgPopUpCaption, cardNameInput, cardLinkInput }

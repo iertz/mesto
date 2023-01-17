@@ -1,4 +1,4 @@
-import { openPopup, deleteCard, likeCard } from './script.js'
+import { openPopup, popupImg, imgPopUpImage, imgPopUpCaption } from './script.js'
 
 export class Card {
   constructor(data, templateSelector){
@@ -9,20 +9,26 @@ export class Card {
 
   // получаем элемент карточки из темплейта
   _getTemplate() {
-    const gridCardEl = document
+    return document
     .querySelector(this._templateSelector)
     .content
     .querySelector('.photo-grid__item')
     .cloneNode(true);
-
-    return gridCardEl;
   } 
+
+  // хэндлеры событий в карточке
+  _deleteCard(event) {
+    const targetEl = event.target;
+    targetEl.closest('.photo-grid__item').remove();
+  }
+    
+  _likeCard(event) {
+    const targetEl = event.target;  
+    targetEl.classList.toggle('photo-grid__uikit-like_active');
+  }
+
   // метод для открытия попапа с картинкой
   _openPopupImg() {
-    const popupImg = document.querySelector('.popup_role_show-image');
-    const imgPopUpImage = popupImg.querySelector('.popup__image');
-    const imgPopUpCaption = popupImg.querySelector('.popup__caption');
-
     imgPopUpImage.src = this._link;
     imgPopUpImage.alt = this._name;
     imgPopUpCaption.textContent = this._name;
@@ -32,8 +38,8 @@ export class Card {
   
   // слушатели
   _setEventListeners() {
-    this._element.querySelector('.photo-grid__uikit-trash').addEventListener('click', deleteCard);
-    this._element.querySelector('.photo-grid__uikit-like').addEventListener('click', likeCard);
+    this._element.querySelector('.photo-grid__uikit-trash').addEventListener('click', this._deleteCard);
+    this._element.querySelector('.photo-grid__uikit-like').addEventListener('click', this._likeCard);
     this._element.querySelector('.photo-grid__image').addEventListener('click', () => {
       this._openPopupImg();
     });
