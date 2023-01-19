@@ -9,31 +9,6 @@ const popupEditProfile = document.querySelector('.popup_role_edit-profile');
 const popupAddCard = document.querySelector('.popup_role_add-card');
 const popups = document.querySelectorAll('.popup');
 
-//формы 
-const forms = Array.from(document.querySelectorAll('.popup__form'));
-
-//валидатор
-
-
-forms.forEach((form) => {
-  const validator = new FormValidator({
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-  }, form);
-
-  validator.enableValidation();
-
-  // слушатель – открытие формы добавления новой карточка через попап
-  btnAdd.addEventListener('click', () => {  
-    validator.toggleButtonState();
-    openPopup(popupAddCard);
-  });
-
-})
-
 // popup profile form 
 const formElementEditProfile = popupEditProfile.querySelector('.popup__form');
 const nameInput = formElementEditProfile.querySelector('.popup__input[name="traveller-name"]');
@@ -49,6 +24,27 @@ const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"
 const popupImg = document.querySelector('.popup_role_show-image');
 const imgPopUpImage = popupImg.querySelector('.popup__image');
 const imgPopUpCaption = popupImg.querySelector('.popup__caption');
+
+
+//popup validators
+const validatorProfile = new FormValidator({
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}, formElementEditProfile);
+
+const validatorAddCard = new FormValidator({
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}, formElementAdd);
+
+validatorProfile.enableValidation();
+validatorAddCard.enableValidation();
 
 //грид с картинками
 const gridSection = document.querySelector('.photo-grid');
@@ -130,6 +126,13 @@ btnEdit.addEventListener('click', function() {
   titleInput.value = currentTitle.textContent;
   openPopup(popupEditProfile);
 });
+
+
+// слушатель – открытие формы добавления новой карточка через попап
+btnAdd.addEventListener('click', () => {  
+  validatorAddCard.toggleButtonState();
+  openPopup(popupAddCard);
+});    
 
 
 
