@@ -16,7 +16,6 @@ const titleInput = formElementEditProfile.querySelector('.popup__input[name="tra
 
 // popup add card form 
 const formElementAdd = popupAddCard.querySelector('.popup__form');
-const submitBtnAddCard = formElementAdd.querySelector('.popup__button');
 const cardNameInput = popupAddCard.querySelector('.popup__input[name="card-name"]'); 
 const cardLinkInput = popupAddCard.querySelector('.popup__input[name="card-link"]');
 
