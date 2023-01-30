@@ -1,5 +1,7 @@
-import { Card } from './Card.js'
+import { Card } from './Сard.js'
 import { FormValidator } from './FormValidator.js'
+import { Section } from './Section.js'
+import { initialCards } from './data.js'
 
 const btnEdit = document.querySelector('.profile__edit-button');
 const btnAdd = document.querySelector('.profile__add-button-rectangle');
@@ -90,12 +92,7 @@ popups.forEach((popup) => {
 });
 
 
-// функция для создания карточки
-function renderCard(item) {
-  const card = new Card(item, '#gridcard-template');
-  const cardElement = card.createCard();
-  return cardElement
-}
+
 
 
 // функция сабмита в профиле
@@ -116,7 +113,20 @@ function submitPopupAddCard (evt) {
   item.name = cardNameInput.value;
   item.link = cardLinkInput.value; 
 
-  gridSection.prepend(renderCard(item)); 
+  const additionalCard = new Section({
+    item: item,
+    renderer: (item) => {
+        const card = new Card(item, '#gridcard-template')
+
+        const cardElement = card.createCard();
+
+        additionalCard.prependItem(cardElement);
+      }
+    },
+    '.photo-grid'
+  );
+  
+  additionalCard.renderItem();
 
   closePopup(popupAddCard);
 
@@ -140,7 +150,19 @@ formElementAdd.addEventListener('submit', submitPopupAddCard);
 
 //получить начальный список карточек
 initialCards.forEach((item) => {
-  gridSection.append(renderCard(item));
+    const cardList = new Section({
+      item: item,
+      renderer: (item) => {
+        const card = new Card(item, '#gridcard-template')
+
+        const cardElement = card.createCard();
+
+        cardList.appendItem(cardElement);
+      }
+    },
+    '.photo-grid'
+  );
+  cardList.renderItem();
 });
 
 
