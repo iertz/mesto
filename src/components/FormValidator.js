@@ -1,4 +1,3 @@
-import { cardNameInput, cardLinkInput } from './script.js'
 
 export class FormValidator {
   constructor(settings, validationEl) {

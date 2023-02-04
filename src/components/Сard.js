@@ -1,7 +1,8 @@
-import { openPopup, popupImg, imgPopUpImage, imgPopUpCaption } from './script.js'
+import { PopupWithImage } from './PopupWithImage.js'
 
 export class Card {
   constructor(data, templateSelector){
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector; 
@@ -28,20 +29,19 @@ export class Card {
   }
 
   // метод для открытия попапа с картинкой
-  _openPopupImg() {
-    imgPopUpImage.src = this._link;
-    imgPopUpImage.alt = this._name;
-    imgPopUpCaption.textContent = this._name;
+    handleCardClick() {
+      const popupWithImg = new PopupWithImage(this._data, '.popup_role_show-image');
+      popupWithImg.open();
+      popupWithImg.setEventListeners();
+    }
   
-    openPopup(popupImg);
-  }
   
   // слушатели
   _setEventListeners() {
     this._element.querySelector('.photo-grid__uikit-trash').addEventListener('click', this._deleteCard);
     this._element.querySelector('.photo-grid__uikit-like').addEventListener('click', this._likeCard);
     this._element.querySelector('.photo-grid__image').addEventListener('click', () => {
-      this._openPopupImg();
+      this.handleCardClick();
     });
   };
 
