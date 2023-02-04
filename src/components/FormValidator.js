@@ -1,4 +1,3 @@
-import { cardNameInput, cardLinkInput } from './script.js'
 
 export class FormValidator {
   constructor(settings, validationEl) {
@@ -42,7 +41,7 @@ export class FormValidator {
   }; 
 
   toggleButtonState () {
-    if ((this._hasInvalidInput(this._inputList)) || (((cardLinkInput.value === '') || (cardNameInput.value === '')))){
+    if (this._hasInvalidInput(this._inputList)) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
       this._buttonElement.setAttribute('disabled', '');
     } else {
