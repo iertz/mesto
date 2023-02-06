@@ -1,4 +1,4 @@
-import { PopupWithImage } from './PopupWithImage.js'
+import { popupWithImg } from '../pages/index.js'
 
 export class Card {
   constructor(data, templateSelector){
@@ -19,8 +19,8 @@ export class Card {
 
   // хэндлеры событий в карточке
   _deleteCard(event) {
-    const targetEl = event.target;
-    targetEl.closest('.photo-grid__item').remove();
+    this._element = event.target.closest('.photo-grid__item');
+    this._element.remove();
   }
     
   _likeCard(event) {
@@ -30,9 +30,7 @@ export class Card {
 
   // метод для открытия попапа с картинкой
     handleCardClick() {
-      const popupWithImg = new PopupWithImage(this._data, '.popup_role_show-image');
-      popupWithImg.open();
-      popupWithImg.setEventListeners();
+      popupWithImg.open(this._data);
     }
   
   

@@ -5,17 +5,13 @@ export class Popup {
 
   open() {
     this._item.classList.add('popup_opened');
-    document.addEventListener('keydown', (evt) => {
-      this._handleEscClose(evt)
-    });
+    document.addEventListener('keydown', this._handleEscClose.bind(this));
   }; 
 
   close() {
     this._item.classList.remove('popup_opened');
-    document.addEventListener('keydown', (evt) => {
-      this._handleEscClose(evt)
-    });
-  }
+    document.removeEventListener('keydown', this._handleEscClose.bind(this));
+  };
 
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {

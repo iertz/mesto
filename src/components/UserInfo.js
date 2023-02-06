@@ -4,13 +4,15 @@ export class UserInfo {
     this._titleSelector = titleSelector;
     this._currentName = document.querySelector(this._nameSelector);
     this._currentTitle = document.querySelector(this._titleSelector);
-    this._nameInput = document.querySelector('.popup__input[name="travellerName"]');
-    this._titleInput = document.querySelector('.popup__input[name="travellerTitle"]'); 
   }
 
   getUserInfo() {    
-    this._nameInput.value = this._currentName.textContent;
-    this._titleInput.value = this._currentTitle.textContent; 
+    const userInfo = {};
+
+    userInfo.name = this._currentName.textContent;
+    userInfo.title = this._currentTitle.textContent; 
+
+    return userInfo;
   }
 
   setUserInfo(formValues) {

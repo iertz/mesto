@@ -3,6 +3,7 @@ import { Card } from '../components/Сard.js'
 import { FormValidator } from '../components/FormValidator.js'
 import { Section } from '../components/Section.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
+import { PopupWithImage } from '../components/PopupWithImage'
 import { initialCards } from '../components/data.js'
 import { UserInfo } from '../components/UserInfo.js'
 
@@ -18,6 +19,8 @@ const popupEditProfile = new PopupWithForm( {
   }
 }, '.popup_role_edit-profile');
 
+popupEditProfile.setEventListeners();
+
 const popupAddCard = new PopupWithForm( {
   submitter: (formValues) => {
     const item = {
@@ -32,19 +35,26 @@ const popupAddCard = new PopupWithForm( {
     const additionalCard = new Section({
       item: item,
       renderer: (item) => {
-          const card = new Card(item, '#gridcard-template')
-  
-          const cardElement = card.createCard();
-  
-          additionalCard.prependItem(cardElement);
+          additionalCard.prependItem(createCard(item));
         }
       },
       '.photo-grid'
     );
+
     additionalCard.renderItem();
+    
     popupAddCard.close();
   }
 }, '.popup_role_add-card');
+
+popupAddCard.setEventListeners();
+
+
+function createCard(item) {
+    const card = new Card(item, '#gridcard-template')
+    const cardElement = card.createCard();
+    return cardElement;
+}
 
 // popup add card form 
 const popupAddCardEl = document.querySelector('.popup_role_add-card');
@@ -53,6 +63,8 @@ const formElementAdd = popupAddCardEl.querySelector('.popup__form');
 // popup profile form 
 const popupEditProfileEl = document.querySelector('.popup_role_edit-profile');
 const formElementEditProfile = popupEditProfileEl.querySelector('.popup__form');
+const nameInput = formElementEditProfile.querySelector('.popup__input[name="travellerName"]');
+const titleInput = formElementEditProfile.querySelector('.popup__input[name="travellerTitle"]'); 
 
 
 
@@ -65,6 +77,8 @@ const validatorProfile = new FormValidator({
   errorClass: 'popup__input-error_active'
 }, formElementEditProfile);
 
+validatorProfile.enableValidation();
+
 const validatorAddCard = new FormValidator({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -73,26 +87,27 @@ const validatorAddCard = new FormValidator({
   errorClass: 'popup__input-error_active'
 }, formElementAdd);
 
-
+validatorAddCard.enableValidation();
 
 
 // слушатель – открытие формы добавления новой карточка через попап
 btnAdd.addEventListener('click', () => {  
   validatorAddCard.toggleButtonState();
-  validatorAddCard.enableValidation();
   popupAddCard.open();
-  popupAddCard.setEventListeners();
   
 });
 
 // слушатель – открытие данных профиля
 btnEdit.addEventListener('click', function() {
-  profileInfo.getUserInfo();
-  validatorProfile.enableValidation();
+  const userInfo = profileInfo.getUserInfo();
+  nameInput.value = userInfo.name; 
+  titleInput.value = userInfo.title; 
   popupEditProfile.open();
-  popupEditProfile.setEventListeners();
 });
 
+
+const popupWithImg = new PopupWithImage('.popup_role_show-image');
+popupWithImg.setEventListeners();
 
 
 //получить начальный список карточек
@@ -100,14 +115,12 @@ initialCards.forEach((item) => {
     const cardList = new Section({
       item: item,
       renderer: (item) => {
-        const card = new Card(item, '#gridcard-template')
-
-        const cardElement = card.createCard();
-
-        cardList.appendItem(cardElement);
+        cardList.appendItem(createCard(item));
       }
     },
     '.photo-grid'
-  );
+    );
   cardList.renderItem();
 });
+
+export { popupWithImg } 

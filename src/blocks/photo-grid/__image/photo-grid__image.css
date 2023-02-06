@@ -5,3 +5,7 @@
   object-position: 50% 70%;
   border-radius: 10px 10px 0 0;
 }
+
+.photo-grid__image:hover {
+  opacity: .8;
+}
