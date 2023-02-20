@@ -2,8 +2,7 @@ import './index.css';
 import { Card } from '../components/Сard.js'
 import { FormValidator } from '../components/FormValidator.js'
 import { Section } from '../components/Section.js'
-import { PopupWithForm } from '../components/PopupWithForm.js'
-import { PopupWithImage } from '../components/PopupWithImage'
+import { popupWithImg, PopupWithForm } from '../components/utils.js'
 import { initialCards } from '../components/data.js'
 import { UserInfo } from '../components/UserInfo.js'
 
@@ -11,6 +10,14 @@ const btnEdit = document.querySelector('.profile__edit-button');
 const btnAdd = document.querySelector('.profile__add-button-rectangle');
 
 const profileInfo = new UserInfo({ nameSelector: '.profile__name', titleSelector: '.profile__title' });
+
+const selectors =  {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
 
 //popups
 const popupEditProfile = new PopupWithForm( {
@@ -32,16 +39,7 @@ const popupAddCard = new PopupWithForm( {
     item.link = formValues.cardLink; 
 
   
-    const additionalCard = new Section({
-      item: item,
-      renderer: (item) => {
-          additionalCard.prependItem(createCard(item));
-        }
-      },
-      '.photo-grid'
-    );
-
-    additionalCard.renderItem();
+    cardList.prependItem(createCard(item));
     
     popupAddCard.close();
   }
@@ -69,23 +67,11 @@ const titleInput = formElementEditProfile.querySelector('.popup__input[name="tra
 
 
 //валидаторы
-const validatorProfile = new FormValidator({
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}, formElementEditProfile);
+const validatorProfile = new FormValidator(selectors, formElementEditProfile);
 
 validatorProfile.enableValidation();
 
-const validatorAddCard = new FormValidator({
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}, formElementAdd);
+const validatorAddCard = new FormValidator(selectors, formElementAdd);
 
 validatorAddCard.enableValidation();
 
@@ -106,21 +92,16 @@ btnEdit.addEventListener('click', function() {
 });
 
 
-const popupWithImg = new PopupWithImage('.popup_role_show-image');
+
 popupWithImg.setEventListeners();
 
 
-//получить начальный список карточек
-initialCards.forEach((item) => {
-    const cardList = new Section({
-      item: item,
-      renderer: (item) => {
-        cardList.appendItem(createCard(item));
-      }
-    },
-    '.photo-grid'
-    );
-  cardList.renderItem();
-});
+//инициализация экземпляра класса
+const cardList = new Section({
+    renderer: (item) => {
+      cardList.prependItem(createCard(item)); 
+    }
+  }, '.photo-grid'
+);
 
-export { popupWithImg } 
+initialCards.forEach((card) => cardList.prependItem(createCard(card)));

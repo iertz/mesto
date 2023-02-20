@@ -1,11 +1,11 @@
-import { popupWithImg } from '../pages/index.js'
+import { popupWithImg } from '../components/utils.js'
 
 export class Card {
   constructor(data, templateSelector){
     this._data = data;
     this._name = data.name;
     this._link = data.link;
-    this._templateSelector = templateSelector; 
+    this._templateSelector = templateSelector;
   }
 
   // получаем элемент карточки из темплейта
@@ -19,8 +19,7 @@ export class Card {
 
   // хэндлеры событий в карточке
   _deleteCard(event) {
-    this._element = event.target.closest('.photo-grid__item');
-    this._element.remove();
+    event.target.closest('.photo-grid__item').remove(); 
   }
     
   _likeCard(event) {
